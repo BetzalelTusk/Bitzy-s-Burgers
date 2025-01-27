@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitzy's Burgers</title>
+</head>
+<body>
+  <h1>Bitzy's Burgers Order System</h1>
+  
+  <!-- Form for order inputs -->
+  <form id="order-form">
+    <!-- Name input -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    
+    <!-- Size dropdown -->
+    <label for="size">Size:</label>
+    <select id="size" name="size" required>
+      <option value="1/4lb">1/4lb</option>
+      <option value="1/3lb">1/3lb</option>
+      <option value="1/2lb">1/2lb</option>
+    </select>
+    
+    <!-- Submit button -->
+    <button type="button" id="place-order">Place Order</button>
+  </form>
+  
+  <!-- Table to display orders -->
+  <h2>Order List</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Size</th>
+      </tr>
+    </thead>
+    <tbody id="order-list">
+      <!-- Orders will appear here -->
+    </tbody>
+  </table>
+
+  <script>
+    // JavaScript to handle form submission and update the table
+    document.getElementById("place-order").addEventListener("click", function() {
+      // Get input values
+      const name = document.getElementById("name").value;
+      const size = document.getElementById("size").value;
+      
+      if (name && size) {
+        // Add a new row to the table
+        const table = document.getElementById("order-list");
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `<td>${name}</td><td>${size}</td>`;
+        table.appendChild(newRow);
+        
+        // Clear the form
+        document.getElementById("order-form").reset();
+      } else {
+        alert("Please fill out all fields!");
+      }
+    });
+  </script>
+</body>
+</html>
